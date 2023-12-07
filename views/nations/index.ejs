@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/nation.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="list_nations">
+        <table border="1" cellspacing="0">
+          <caption>
+            <h1>List Nations</h1>
+          </caption>
+          <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Funtion</th>
+          </thead>
+          <tbody>
+            <% nations.forEach(function(nation){ %>
+            <tr>
+              <td><%= nation._id %></td>
+              <td><%= nation.name %></td>
+              <td><%= nation.description %></td>
+              <td>
+                <button><a href="/nations/<%= nation._id %>">Edit</a></button>
+                <button
+                  onclick="deleteNation('<%= nation._id %>')"
+                  style="color: red"
+                >
+                  Delete
+                </button>
+              </td>
+            </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>
+      <div class="form_add_nations">
+        <caption>
+          <h1>Add Nation</h1>
+        </caption>
+        <form action="/nations" method="POST">
+          <div>
+            <label for="">Name</label>
+            <br />
+            <input
+              id="ip_name"
+              type="text"
+              name="name"
+              placeholder="type name"
+            />
+          </div>
+          <div>
+            <label for="">Description</label>
+            <br />
+            <input
+              id="ip_description"
+              type="text"
+              name="description"
+              placeholder="type descrpition"
+            />
+          </div>
+          <button id="btn_add_nations" type="submit">Add Nation</button>
+        </form>
+      </div>
+    </div>
+    <script src="js/nations.script.js"></script>
+  </body>
+</html>
